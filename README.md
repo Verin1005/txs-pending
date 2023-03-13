@@ -6,7 +6,7 @@
 
 # Run
 
-    uvicorn main:app
+    uvicorn main:app --host <HOST> --port <PORT>
 
 # Docs
 
