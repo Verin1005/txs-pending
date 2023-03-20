@@ -1,0 +1,6 @@
+.gitignore
+.git
+.mypy_cache
+*.json
+__pycache__
+# Dockerfile

@@ -25,6 +25,7 @@ class Scraper():
 
     def _get_paged_url(self, page):
         return f'https://etherscan.io/txsPending?a={self._address}&ps=100&p={page}'
+
     def _get_all_paged_urls(self, total_pages):
         return [self._get_paged_url(page) for page in range(0, total_pages)]
 

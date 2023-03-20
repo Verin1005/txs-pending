@@ -2,3 +2,4 @@ fastapi
 pandas
 selenium
 uvicorn[standard]
+webdriver-manager
