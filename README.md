@@ -11,3 +11,7 @@
 # Docs
 
     http://127.0.0.1:8000/redoc
+# Docker
+
+	docker build -t <name>:<tag> .
+	docker run --name txpending --rm -p 3000:3000 <image>

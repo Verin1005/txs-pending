@@ -4,6 +4,7 @@ import collections
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -20,7 +21,7 @@ class Scraper():
         options.add_argument("--window-size=1920,1080")
         user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
         options.add_argument(f'user-agent={user_agent}')
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
         return driver
 
     def _get_paged_url(self, page):
@@ -48,14 +49,16 @@ class Scraper():
     def try_load_page(self, page):
         try:
             return self.load_page(page)
-        except:
+        except Exception as e:
+            print(e)
             return pd.DataFrame([]), -1
 
     def try_load_all_pages(self):
         try:
             return self.load_all_pages()
-        except:
-            return df.DataFrame([]), -1
+        except Exception as e:
+            print(e)
+            return pd.DataFrame([]), -1
 
     def load_all_pages(self):
         table_dict = {}
